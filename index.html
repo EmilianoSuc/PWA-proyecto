@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c35">
+  <meta name="description" content="Control sencillo de productos y existencias para pequeños negocios.">
+  <title>Estim</title>
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Tu carrito de Steam, inicio">
+      <span class="brand-mark" aria-hidden="true"><img src="/icons/icon-192.png" alt="Logo de Estim"></span>
+      <span><strong>STEAM</strong><small>control de mi cuenta</small></span>
+    </a>
+    <div class="topbar-actions">
+      <span id="connection-status" class="connection"><span class="status-dot"></span><span>Conectando…</span></span>
+      <button id="install-button" class="button button-quiet" type="button" hidden>Instalar app</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">PANEL DE CONTROL</p>
+        <h1>Lo quieres, <span>lo tenemos.</span></h1>
+        <p class="welcome-copy">Consulta existencias y registra movimientos desde un solo lugar.</p>
+      </div>
+      <div class="welcome-icon" aria-hidden="true">
+      <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Resumen del inventario">
+      <article class="summary-card"><span class="summary-icon icon-green">▦</span><div><p>Productos</p><strong id="total-products">—</strong></div></article>
+      <article class="summary-card"><span class="summary-icon icon-blue">▤</span><div><p>Unidades en existencia</p><strong id="total-stock">—</strong></div></article>
+      <article class="summary-card"><span class="summary-icon icon-orange">!</span><div><p>Existencias bajas</p><strong id="low-stock">—</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel form-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">NUEVO REGISTRO</p><h2>Agregar producto</h2></div>
+          <span class="heading-mark" aria-hidden="true">＋</span>
+        </div>
+        <form id="product-form" novalidate>
+          <div class="field">
+            <label for="product-name">Nombre del producto</label>
+            <input id="product-name" name="nombre" type="text" maxlength="100" placeholder="Ej. Steam Deck" required>
+          </div>
+          <div class="field">
+            <label for="product-category">Categoría</label>
+            <input id="product-category" name="categoria" type="text" maxlength="60" placeholder="Ej. Hardware" required>
+          </div>
+          <div class="field">
+            <label for="product-stock">Existencias iniciales</label>
+            <input id="product-stock" name="stock" type="number" min="0" step="1" placeholder="0" required>
+          </div>
+
+          <button id="save-button" class="button button-primary" type="submit"><span aria-hidden="true">＋</span> Guardar producto</button>
+          <p class="form-hint">Los campos son obligatorios. El inventario no puede ser negativo.</p>
+        </form>
+      </article>
+
+      <section class="panel inventory-panel" aria-labelledby="inventory-title">
+        <div class="panel-heading inventory-heading">
+          <div><p class="eyebrow">INVENTARIO</p><h2 id="inventory-title">Productos añadidos</h2></div>
+          <button id="refresh-button" class="button button-quiet" type="button" aria-label="Actualizar lista">↻ <span>Actualizar</span></button>
+        </div>
+        <p id="notice" class="notice" role="status" aria-live="polite"></p>
+        <div id="product-list" class="product-list" aria-live="polite"></div>
+      </section>
+    </section>
+    <footer class="page-footer"><span>Tu inventario de Steam · Proyecto didáctico PWA</span><span id="data-status">Los cambios se guardan en la base de datos.</span></footer>
+  </main>
+
+  <script src="js/producto-card.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
