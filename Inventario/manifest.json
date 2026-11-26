@@ -1,0 +1,33 @@
+{
+  "id": "./",
+  "name": "Tu carrito de Steam — Control de productos",
+  "short_name": "Inventario",
+  "description": "Control sencillo de productos y existencias para pequeños negocios.",
+  "lang": "es-MX",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7f5",
+  "theme_color": "#123c35",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },    
+    {
+      "src": "icons/Header.png",
+      "sizes": "1920x662",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
